@@ -15,7 +15,7 @@ function App() {
       url: "https://www.fredperry.com/media/catalog/product/cache/f0494950fc455c9356f1f561e7545603/J/7/J7320_795_8.JPG",
       description:
         "Our Harrington jacket, made in England like it always has been. Constructed from a tough cotton/poly blend, with all its signature design details: flap pockets, buttoned neck and a tartan lining.",
-        price: "€ 170",
+        price: 170,
         amount: 0,
     },
     {
@@ -24,7 +24,7 @@ function App() {
       url: "https://www.fredperry.com/media/catalog/product/cache/d9f1c7ee3f6f657723fdb27a2065b44c/J/2/J2660_638_V2_Q323_MOD1_FRONT.JPG",
       description:
         "A fully-lined nylon-twill sports jackets designed with our signature twin tipping inside the neck.",
-        price: "€ 110",
+        price: 110,
         amount: 0,
     },
     {
@@ -33,7 +33,7 @@ function App() {
       url: "https://www.fredperry.com/media/catalog/product/cache/2f1ca1b0ff6bb82d7371f9b0a2622b62/J/6/J6515_102_V2_Q323_MOD1_FRONT.JPG",
       description:
         "Our recycled nylon shell mac - a classic silhouette with sharp details.",
-        price: "€ 150",
+        price: 150,
         amount: 0,
     },
     {
@@ -42,7 +42,7 @@ function App() {
       url: "https://www.fredperry.com/media/catalog/product/cache/999f76f6a65652c494b7235c30fc8064/J/4/J4559_248_V2_Q323_MOD1_FRONT.JPG",
       description:
         "A zip-through jacket in durable recycled nylon, fitted with a warm fleece lining and embroidered Fred Perry branding to the back neck.",
-        price: "€ 130",
+        price: 130,
         amount: 0,
     },
     
@@ -62,6 +62,17 @@ function App() {
     });
     refreshCart();
   }
+  function removeProduct(title, id) {
+    products.forEach((prod) => {
+      if (prod.id === id) {
+        if (prod.amount > 0) {
+          prod.amount--;
+          setCartNum(cartNum - 1);
+        }
+      }
+    });
+    refreshCart();
+  }
   return (
     <BrowserRouter className="App">
       <Routes>
@@ -70,7 +81,11 @@ function App() {
           element={
             <>
               <MenuBar cartNum={cartNum} isHome={0} isShop={1} />,
-              <Shop products={products} onAdd={addProduct} />
+              <Shop
+                products={products}
+                onAdd={addProduct}
+                onRemove={removeProduct}
+              />
             </>
           }
         />
@@ -80,7 +95,7 @@ function App() {
           element={
             <>
               <MenuBar cartNum={cartNum} isHome={0} />,
-              <Cart products={cartProducts} />
+              <Cart products={cartProducts} onRemove={removeProduct} />
             </>
           }
         />
