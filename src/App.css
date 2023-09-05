@@ -5,7 +5,7 @@ body {
   background-image: url("https://livingston-designer-outlet.co.uk/wp-content/uploads/2021/09/fred-perry-models-in-clothing.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 1400px;
+  background-size: cover;
 }
 .menu-bar {
   background-color: black;
@@ -119,6 +119,6 @@ body {
   right: 6px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  padding: 5px;
+  padding: 3px;
 }
 
