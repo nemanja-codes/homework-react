@@ -24,7 +24,7 @@ function MenuBar({ cartNum, isHome, isShop }) {
         <Link
           to="/shop"
           className="menu-bar-items"
-          //style={isShop === 1 ? { color: "red" } : { color: "white" }}
+          style={isShop === 1 ? { color: "gold" } : { color: "white" }}
         >
           Shop
         </Link>
